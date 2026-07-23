@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-accent-theme="cyan">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Himanshu Mourya | AI & Machine Learning Engineer</title>
+    <meta name="description" content="Personal Portfolio of Himanshu Mourya - AI & ML Engineer specializing in LLMs, LangChain, Gemini API, Computer Vision (OpenCV, CNNs), and Deep Learning.">
+    <meta name="keywords" content="Himanshu Mourya, AI Engineer, Machine Learning, Python, LangChain, Gemini API, TensorFlow, OpenCV, Computer Vision, Portfolio">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Neural Network Interactive Canvas -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Ambient Glow Blobs -->
+    <div class="ambient-background">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+        <div class="glow-blob blob-3"></div>
+        <div class="bg-grid-overlay"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">
+                <span class="brand-logo"><i class="fa-solid fa-brain"></i></span>
+                <span class="brand-name" id="nav-brand-name">Himanshu<span class="text-accent">Mourya</span></span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#ailab" class="nav-link"><i class="fa-solid fa-flask text-cyan"></i> AI Lab</a>
+                <a href="#terminal-section" class="nav-link"><i class="fa-solid fa-terminal text-green"></i> CLI</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn btn-primary btn-sm" id="btn-open-ai-chat" title="Interactive Gemini AI Q&A">
+                    <i class="fa-solid fa-sparkles"></i> <span>Ask AI</span>
+                </button>
+                <button class="btn btn-outline btn-sm" id="btn-open-editor" title="Profile Customizer">
+                    <i class="fa-solid fa-sliders"></i> <span class="hide-mobile">Edit</span>
+                </button>
+                <button class="theme-toggle-btn" id="btn-theme-toggle" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon" id="theme-icon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="btn-mobile-menu" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <span class="drawer-title">Navigation</span>
+            <button class="drawer-close" id="btn-close-drawer"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#about" class="drawer-link"><i class="fa-solid fa-user"></i> About Me</a>
+            <a href="#skills" class="drawer-link"><i class="fa-solid fa-layer-group"></i> Skills & Stack</a>
+            <a href="#projects" class="drawer-link"><i class="fa-solid fa-microchip"></i> Projects</a>
+            <a href="#ailab" class="drawer-link"><i class="fa-solid fa-flask"></i> Interactive AI Lab</a>
+            <a href="#terminal-section" class="drawer-link"><i class="fa-solid fa-terminal"></i> CLI Terminal</a>
+            <a href="#experience" class="drawer-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+            <a href="#contact" class="drawer-link"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+        </nav>
+        <div class="drawer-footer">
+            <button class="btn btn-primary w-100 mb-2" id="drawer-btn-ai">
+                <i class="fa-solid fa-sparkles"></i> Ask AI Q&A Assistant
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="status-badge" id="status-badge">
+                        <span class="pulse-dot"></span>
+                        <span id="display-status">B.Tech CSE Student @ J K Institute (CGPA: 8.87)</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Hi, I'm <br>
+                        <span class="text-gradient" id="hero-display-name">Himanshu Mourya</span>
+                    </h1>
+
+                    <div class="hero-subtitle">
+                        <span class="static-prefix">Building </span>
+                        <span class="typing-text" id="typing-text">AI Systems & LLMs</span>
+                        <span class="cursor">|</span>
+                    </div>
+
+                    <p class="hero-bio" id="hero-display-bio">
+                        Computer Science Engineering undergraduate passionate about Artificial Intelligence, Large Language Models (LLMs), LangChain, Computer Vision, and Deep Learning. Experienced in developing medical diagnostics AI and real-time emotion recognition systems.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#ailab" class="btn btn-primary btn-lg">
+                            <i class="fa-solid fa-flask-vial"></i> Launch AI Simulators
+                        </a>
+                        <a href="#projects" class="btn btn-secondary btn-lg">
+                            <i class="fa-solid fa-code-branch"></i> View Projects
+                        </a>
+                        <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-lg" id="btn-quick-cv">
+                            <i class="fa-solid fa-file-arrow-down"></i> Resume PDF
+                        </a>
+                    </div>
+
+                    <div class="hero-socials">
+                        <span class="social-label">Connect:</span>
+                        <div class="social-icons">
+                            <a href="https://github.com/Mouryahimanshu" target="_blank" rel="noopener" id="hero-github-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/mourya-himanshu" target="_blank" rel="noopener" id="hero-linkedin-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="mailto:himanshumourya8057@gmail.com" id="hero-email-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                            <a href="tel:+918057186162" id="hero-phone-link" title="Call"><i class="fa-solid fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-avatar-wrapper">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-card">
+                        <img src="assets/avatar.jpg" alt="Himanshu Mourya Portrait" class="avatar-img" id="hero-avatar-img">
+                        <div class="floating-badge badge-1">
+                            <i class="fa-solid fa-robot text-cyan"></i> LangChain & Gemini
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <i class="fa-solid fa-eye text-green"></i> OpenCV & CNNs
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <i class="fa-solid fa-chart-line text-amber"></i> TensorFlow & PyTorch
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me & Education Section -->
+        <section class="section-padding" id="about">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Academic & Background</span>
+                    <h2 class="section-title">About <span class="text-gradient">Himanshu</span></h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-stats-wrapper">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number" id="stat-cgpa">8.87</div>
+                                <div class="stat-label">B.Tech CGPA</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="stat-projects">4+</div>
+                                <div class="stat-label">Core AI Projects</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="stat-kaggle">15+</div>
+                                <div class="stat-label">Kaggle Datasets</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="stat-models">5+</div>
+                                <div class="stat-label">Deployed ML Models</div>
+                            </div>
+                        </div>
+
+                        <!-- Education Highlight Cards -->
+                        <div class="education-box glass-card mt-4">
+                            <h4><i class="fa-solid fa-graduation-cap text-accent"></i> Education Journey</h4>
+                            <div class="edu-item">
+                                <div class="edu-header">
+                                    <strong>J K Institute of Applied Physics and Technology</strong>
+                                    <span class="edu-year">2022 – 2026</span>
+                                </div>
+                                <p class="edu-degree">B.Tech - Computer Science and Engineering | <span>CGPA: 8.87</span></p>
+                                <p class="edu-location"><i class="fa-solid fa-location-dot"></i> Prayagraj, Uttar Pradesh</p>
+                            </div>
+                            <hr class="divider">
+                            <div class="edu-item">
+                                <div class="edu-header">
+                                    <strong>GuruNanak Inter College</strong>
+                                    <span class="edu-year">2019 – 2021</span>
+                                </div>
+                                <p class="edu-degree">Intermediate (12th Grade) | <span>Percentage: 85.40%</span></p>
+                                <p class="edu-location"><i class="fa-solid fa-location-dot"></i> Lakhimpur (Kheri), Uttar Pradesh</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-text-content">
+                        <h3 class="about-heading" id="about-display-heading">Driven by Machine Learning, Natural Language Processing & Computer Vision</h3>
+                        <p class="about-paragraph" id="about-display-text1">
+                            I am a Computer Science undergraduate specializing in state-of-the-art AI architectures. My work spans building Gemini-powered conversational QA agents, medical image diagnosis using Deep Transfer Learning CNNs, and real-time computer vision sentiment systems.
+                        </p>
+                        <p class="about-paragraph" id="about-display-text2">
+                            I actively solve real-world problems by deploying production ML models on Hugging Face, Kaggle, Gradio, and Streamlit. I focus on high predictive accuracy, model efficiency, hyperparameter tuning, and seamless document retrieval.
+                        </p>
+
+                        <div class="about-pillars">
+                            <div class="pillar-item">
+                                <div class="pillar-icon"><i class="fa-solid fa-brain"></i></div>
+                                <div>
+                                    <h4>LLMs & Prompt Engineering</h4>
+                                    <p>LangChain, Gemini API, semantic search, and document QA pipelines.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-icon"><i class="fa-solid fa-eye"></i></div>
+                                <div>
+                                    <h4>Computer Vision & CNNs</h4>
+                                    <p>OpenCV real-time video processing and transfer learning with ImageNet.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                <div>
+                                    <h4>Model Evaluation & Optimization</h4>
+                                    <p>Precision, Recall, F1-Score, Confusion Matrices, and hyperparameter tuning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section-padding bg-surface" id="skills">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Technical Proficiency</span>
+                    <h2 class="section-title">Skills & <span class="text-gradient">Tech Stack</span></h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="skills-filter-bar">
+                    <button class="filter-btn active" data-skill-filter="all">All Skills</button>
+                    <button class="filter-btn" data-skill-filter="languages">Languages</button>
+                    <button class="filter-btn" data-skill-filter="adv-lib">Advanced Libraries & LLMs</button>
+                    <button class="filter-btn" data-skill-filter="ds-cv">Data Science & CV</button>
+                    <button class="filter-btn" data-skill-filter="tools">Developer Tools</button>
+                </div>
+
+                <div class="skills-grid" id="skills-grid-container">
+                    <!-- Dynamic Skills Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="section-padding" id="projects">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">AI & ML Innovations</span>
+                    <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+                    <p class="section-desc">Projects developed by Himanshu Mourya using LangChain, Gemini API, CNNs, OpenCV, and Scikit-learn.</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="projects-filter-bar">
+                    <button class="filter-btn active" data-project-filter="all">All Projects</button>
+                    <button class="filter-btn" data-project-filter="ai">LLMs & NLP (Gemini)</button>
+                    <button class="filter-btn" data-project-filter="cv">Computer Vision & CNNs</button>
+                    <button class="filter-btn" data-project-filter="ml">Deep Learning & ML</button>
+                </div>
+
+                <div class="projects-grid" id="projects-grid-container">
+                    <!-- Dynamic Projects Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- EXTRAORDINARY FEATURE 1: INTERACTIVE AI MODEL LAB -->
+        <section class="section-padding bg-surface" id="ailab">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle"><i class="fa-solid fa-sparkles text-cyan"></i> Live Interactive Feature</span>
+                    <h2 class="section-title">Himanshu's <span class="text-gradient">Interactive AI Model Lab</span></h2>
+                    <p class="section-desc">Test real-time interactive simulations of Himanshu's core Machine Learning models right in your browser!</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="lab-grid">
+
+                    <!-- Model Demo 1: Bone Age Prediction Simulator -->
+                    <div class="lab-card glass-card">
+                        <div class="lab-card-header">
+                            <span class="lab-tag"><i class="fa-solid fa-x-ray"></i> CNN Transfer Learning</span>
+                            <h3>Bone Age Prediction Simulator</h3>
+                            <p>Simulates Himanshu's Gradio application predicting bone age from medical X-ray scans.</p>
+                        </div>
+                        <div class="lab-card-body">
+                            <div class="xray-sample-picker">
+                                <label>Select Sample X-Ray Scan:</label>
+                                <div class="picker-options">
+                                    <button class="picker-btn active" data-scan="child">Child Hand Scan (6 Yrs)</button>
+                                    <button class="picker-btn" data-scan="teen">Teen Hand Scan (14 Yrs)</button>
+                                    <button class="picker-btn" data-scan="adult">Adult Hand Scan (21 Yrs)</button>
+                                </div>
+                            </div>
+                            <div class="model-visual-preview">
+                                <div class="scan-display" id="scan-display-box">
+                                    <div class="scan-overlay-heatmap" id="scan-heatmap"></div>
+                                    <i class="fa-solid fa-hand-holding-medical scan-icon"></i>
+                                    <span class="scan-label" id="scan-name">Child Hand Scan sample #1</span>
+                                </div>
+                                <div class="prediction-results">
+                                    <div class="res-metric">
+                                        <span>Predicted Bone Age:</span>
+                                        <strong class="text-cyan" id="pred-age">6.2 Years</strong>
+                                    </div>
+                                    <div class="res-metric">
+                                        <span>CNN Confidence Score:</span>
+                                        <strong class="text-green" id="pred-confidence">96.4%</strong>
+                                    </div>
+                                    <div class="res-metric">
+                                        <span>Workflow Time Saved:</span>
+                                        <strong class="text-amber">40% Faster</strong>
+                                    </div>
+                                    <div class="res-metric">
+                                        <span>Model Architecture:</span>
+                                        <small>Fine-Tuned ImageNet (CNN)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3" id="btn-run-xray-sim">
+                                <i class="fa-solid fa-play"></i> Run Inference Simulation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Model Demo 2: Real-time Emotion Detector Simulator -->
+                    <div class="lab-card glass-card">
+                        <div class="lab-card-header">
+                            <span class="lab-tag"><i class="fa-solid fa-face-smile"></i> Computer Vision & OpenCV</span>
+                            <h3>7-Emotion Classifier Tester</h3>
+                            <p>Simulates real-time video facial sentiment evaluation across 7 human emotion states.</p>
+                        </div>
+                        <div class="lab-card-body">
+                            <div class="emotion-selector">
+                                <label>Test Facial Expression State:</label>
+                                <div class="picker-options">
+                                    <button class="emo-btn active" data-emo="Happy">😊 Happy</button>
+                                    <button class="emo-btn" data-emo="Surprise">😲 Surprise</button>
+                                    <button class="emo-btn" data-emo="Sad">😢 Sad</button>
+                                    <button class="emo-btn" data-emo="Angry">😡 Angry</button>
+                                    <button class="emo-btn" data-emo="Neutral">😐 Neutral</button>
+                                    <button class="emo-btn" data-emo="Disgust">🤢 Disgust</button>
+                                    <button class="emo-btn" data-emo="Fear">😨 Fear</button>
+                                </div>
+                            </div>
+                            <div class="emotion-meter-box">
+                                <div class="emo-preview-box">
+                                    <div class="face-mesh-overlay">
+                                        <div class="bounding-box">
+                                            <span class="bbox-label" id="emo-bbox-text">HAPPY (98%)</span>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-user-astronaut face-placeholder-icon"></i>
+                                </div>
+                                <div class="emo-bars-container" id="emo-bars-container">
+                                    <!-- Dynamic Emotion Probability Bars -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EXTRAORDINARY FEATURE 2: INTERACTIVE CLI TERMINAL -->
+        <section class="section-padding" id="terminal-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle"><i class="fa-solid fa-terminal text-green"></i> Developer Interface</span>
+                    <h2 class="section-title">Interactive <span class="text-gradient">Mourya-CLI Terminal</span></h2>
+                    <p class="section-desc">Type commands to interact with Himanshu's developer console in real time!</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="terminal-window glass-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">himanshu@mourya-ai-station:~</span>
+                        <span class="terminal-badge">Python 3.11</span>
+                    </div>
+                    <div class="terminal-body" id="terminal-body">
+                        <div class="terminal-line">Welcome to <span class="text-cyan">Mourya-CLI v2.4</span>. Type <span class="text-green">'help'</span> for available commands.</div>
+                        <div class="terminal-line">Try running: <span class="text-amber">run gemini_qa.py</span>, <span class="text-amber">skills</span>, <span class="text-amber">education</span>, or <span class="text-amber">contact</span>.</div>
+                    </div>
+                    <div class="terminal-input-row">
+                        <span class="prompt-symbol">himanshu@ai:~$</span>
+                        <input type="text" id="terminal-input" placeholder="Type a command (e.g. help)..." autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section-padding bg-surface" id="experience">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Practical Contributions</span>
+                    <h2 class="section-title">Kaggle & <span class="text-gradient">Hugging Face Experience</span></h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-period"><i class="fa-solid fa-trophy"></i> Kaggle Open Source & Datasets</span>
+                                <span class="timeline-tag">Data Science</span>
+                            </div>
+                            <h3 class="timeline-role">Kaggle ML Contributor & Data Analyst</h3>
+                            <p class="timeline-description">
+                                Analyzed 15+ Kaggle real-world datasets and successfully built & deployed 5 production-ready Machine Learning models within 6 months. Created competitive data analysis frameworks solving practical challenges for 15+ organizations and institutions.
+                            </p>
+                            <div class="timeline-tech-tags">
+                                <span>Scikit-learn</span> <span>Pandas</span> <span>NumPy</span> <span>RandomForest</span> <span>KNN</span> <span>Seaborn</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-period"><i class="fa-solid fa-cubes"></i> Hugging Face Hub</span>
+                                <span class="timeline-tag">Transformers & Deployment</span>
+                            </div>
+                            <h3 class="timeline-role">Open-Source Transformer & App Deployer</h3>
+                            <p class="timeline-description">
+                                Worked with open-source transformer models from Hugging Face to improve deep learning model efficiency and flexibility. Utilized Gradio and Streamlit web frameworks to rapidly deploy complex computer vision and ML applications without extensive web development overhead.
+                            </p>
+                            <div class="timeline-tech-tags">
+                                <span>Hugging Face</span> <span>Transformers</span> <span>Gradio</span> <span>Streamlit</span> <span>PyTorch / Keras</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section-padding" id="contact">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Get In Touch</span>
+                    <h2 class="section-title">Contact <span class="text-gradient">Himanshu</span></h2>
+                    <p class="section-desc">Open for AI/ML engineering roles, research collaborations, and internships.</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info-cards">
+                        <div class="info-card glass-card">
+                            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="info-details">
+                                <span class="info-label">Direct Email</span>
+                                <a href="mailto:himanshumourya8057@gmail.com" class="info-value" id="contact-display-email">himanshumourya8057@gmail.com</a>
+                            </div>
+                            <button class="copy-btn" id="btn-copy-email" title="Copy Email"><i class="fa-regular fa-copy"></i></button>
+                        </div>
+
+                        <div class="info-card glass-card">
+                            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="info-details">
+                                <span class="info-label">Phone / WhatsApp</span>
+                                <a href="tel:+918057186162" class="info-value">+91-8057186162</a>
+                            </div>
+                        </div>
+
+                        <div class="info-card glass-card">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="info-details">
+                                <span class="info-label">College & Location</span>
+                                <span class="info-value" id="contact-display-location">Prayagraj, Uttar Pradesh, India</span>
+                            </div>
+                        </div>
+
+                        <div class="social-connect-box glass-card">
+                            <h4>Social Profiles & Repositories</h4>
+                            <div class="social-links-large">
+                                <a href="https://github.com/Mouryahimanshu" target="_blank" rel="noopener" class="social-pill"><i class="fa-brands fa-github"></i> GitHub Profile</a>
+                                <a href="https://www.linkedin.com/in/mourya-himanshu" target="_blank" rel="noopener" class="social-pill"><i class="fa-brands fa-linkedin"></i> LinkedIn Network</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper glass-card">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Your Name</label>
+                                    <input type="text" id="contact-name" class="form-input" placeholder="e.g. Dr. Alex Vance" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Your Email</label>
+                                    <input type="email" id="contact-email" class="form-input" placeholder="e.g. alex@techcorp.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">Subject</label>
+                                <input type="text" id="contact-subject" class="form-input" placeholder="AI Engineering Opportunity / Research Inquiry" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" class="form-input" rows="5" placeholder="Hi Himanshu, I reviewed your bone age and Gemini projects..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100" id="btn-submit-contact">
+                                <i class="fa-solid fa-paper-plane"></i> Send Message via Email
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <a href="#hero" class="nav-brand">
+                    <span class="brand-name" id="footer-brand-name">Himanshu<span class="text-accent">Mourya</span></span>
+                </a>
+                <p class="footer-tagline">AI & Machine Learning Engineer | B.Tech CSE Student</p>
+            </div>
+            <div class="footer-right">
+                <p class="copyright">&copy; <span id="current-year">2026</span> Himanshu Mourya. All rights reserved.</p>
+                <a href="#hero" class="back-to-top-btn" title="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- RESUME PDF VIEWER MODAL -->
+    <div class="modal-overlay" id="resume-modal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-file-pdf text-accent"></i> Himanshu Mourya — Curriculum Vitae</h3>
+                <button class="modal-close" id="btn-close-resume-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="font-family: var(--font-body); color: var(--text-primary);">
+                <div style="border-bottom: 2px solid var(--accent-color); padding-bottom: 1rem; margin-bottom: 1.5rem; text-align: center;">
+                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800;">HIMANSHU MOURYA</h2>
+                    <p style="font-size: 1rem; color: var(--text-secondary); margin-top: 0.4rem;">
+                        <i class="fa-solid fa-phone"></i> +91-8057186162 | 
+                        <i class="fa-solid fa-envelope"></i> himanshumourya8057@gmail.com | 
+                        <i class="fa-brands fa-linkedin"></i> linkedin.com/in/mourya-himanshu | 
+                        <i class="fa-brands fa-github"></i> github.com/Mouryahimanshu
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; margin-bottom: 0.8rem;">
+                        Education
+                    </h3>
+                    <div style="margin-bottom: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 700;">
+                            <span>J K Institute of Applied Physics and Technology</span>
+                            <span>Prayagraj, Uttar Pradesh</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: var(--text-secondary);">
+                            <span>B.Tech - Computer Science and Engineering — <strong>CGPA: 8.87</strong></span>
+                            <span>2022 – 2026</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-weight: 700;">
+                            <span>GuruNanak Inter College</span>
+                            <span>Lakhimpur(Kheri), Uttar Pradesh</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: var(--text-secondary);">
+                            <span>Intermediate — <strong>Percentage: 85.40%</strong></span>
+                            <span>2019 – 2021</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; margin-bottom: 0.8rem;">
+                        Skills Summary
+                    </h3>
+                    <ul style="line-height: 1.8; color: var(--text-secondary); list-style: disc; padding-left: 1.2rem;">
+                        <li><strong>Languages:</strong> Python, C++, C, HTML/CSS</li>
+                        <li><strong>Advance Library:</strong> Tensorflow (Keras), Scikit-learn, Scapy, NLTK, Langchain, LLMs</li>
+                        <li><strong>Library:</strong> OpenCV, Pandas, NumPy, Matplotlib, Seaborn</li>
+                        <li><strong>Developer Tools:</strong> Jupyter Notebook, Google Colab, Gradio, VS Code</li>
+                        <li><strong>Platform:</strong> Windows and Linux</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; margin-bottom: 0.8rem;">
+                        Projects
+                    </h3>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem;">QA-System-Using-Gemini | <em>Python, LangChain, Gemini API, NLP</em></h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.95rem; display: grid; gap: 0.3rem;">
+                            <li>Developed an AI-powered Question Answering system using Google Gemini and LangChain for generating context-aware and intelligent responses.</li>
+                            <li>Implemented semantic search and NLP-based retrieval techniques to improve query understanding and answer accuracy from custom datasets.</li>
+                            <li>Integrated prompt engineering and scalable backend workflows in Python, enabling efficient conversational AI and document-based querying.</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem;">Bone-Age-Prediction | <em>CNNs, Transfer learning</em></h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.95rem; display: grid; gap: 0.3rem;">
+                            <li>Built a Gradio-powered application that predicts bone age from X-ray scans, streamlining workflow for 50+ medical professionals and reducing analysis time by 40%.</li>
+                            <li>Applied transfer learning by fine-tuning ImageNet models, reducing training time by 40% while maintaining high predictive accuracy.</li>
+                            <li>Designed and tested 8 unique models while monitoring loss and validation-loss, improving real-time analytics performance by 40%.</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem;">Realtime-Emotion-Detection | <em>CNNs and OpenCV</em></h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.95rem; display: grid; gap: 0.3rem;">
+                            <li>Implemented deep learning models capable of detecting seven human emotions: Angry, Disgust, Fear, Happy, Neutral, Sad, and Surprise.</li>
+                            <li>Developed a real-time emotion recognition system using OpenCV to analyze 5,000+ video clips for customer engagement insights.</li>
+                            <li>Evaluated model performance using Accuracy, Precision, Recall, and F1-Score metrics.</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem;">Heart-disease-Detection | <em>Deep Learning</em></h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.95rem; display: grid; gap: 0.3rem;">
+                            <li>Developed and optimized machine learning models using KNN, RandomForestClassifier, and LogisticRegression.</li>
+                            <li>Applied hyperparameter tuning techniques to improve model performance and usability across multiple teams.</li>
+                            <li>Performed comparative analysis using Classification Reports and Confusion Matrix metrics to identify the best-performing model.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; margin-bottom: 0.8rem;">
+                        Experience
+                    </h3>
+                    <div style="margin-bottom: 0.8rem;">
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem;">Kaggle</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.95rem; display: grid; gap: 0.3rem;">
+                            <li>Analyzed 15 Kaggle datasets focused on real-world applications and deployed 5 production-ready machine learning models within 6 months.</li>
+                            <li>Built a competitive data analysis framework that contributed to solving real-world challenges for 15+ organizations and institutions.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem;">Hugging Face</h4>
+                        <ul style="padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.95rem; display: grid; gap: 0.3rem;">
+                            <li>Worked with open-source transformer models from Hugging Face to improve deep learning model efficiency and flexibility.</li>
+                            <li>Used Gradio and Streamlit frameworks to deploy machine learning and deep learning applications without extensive web development knowledge.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                    <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / Save PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXTRAORDINARY FEATURE 3: INTERACTIVE GEMINI AI Q&A MODAL -->
+    <div class="modal-overlay" id="ai-chat-modal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-sparkles text-cyan"></i> Ask Gemini AI About Himanshu Mourya</h3>
+                <button class="modal-close" id="btn-close-ai-chat"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="ai-chat-container">
+                    <div class="ai-chat-messages" id="ai-chat-messages">
+                        <div class="chat-msg bot-msg">
+                            <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                            <div class="msg-text">
+                                Hello! I am Himanshu's AI assistant trained on his exact background, resume, skills, and projects. What would you like to know about Himanshu?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-prompts">
+                        <span>Suggested Questions:</span>
+                        <button class="prompt-chip" data-q="What are Himanshu's main AI projects?">🚀 Main AI Projects</button>
+                        <button class="prompt-chip" data-q="Tell me about his Bone Age Prediction app.">🦴 Bone Age App</button>
+                        <button class="prompt-chip" data-q="What is his college CGPA & education?">🎓 Education & CGPA</button>
+                        <button class="prompt-chip" data-q="What Python libraries does he use?">🐍 Tech Stack</button>
+                    </div>
+
+                    <div class="ai-chat-input-row">
+                        <input type="text" id="ai-chat-input" placeholder="Ask anything about Himanshu's experience or skills..." autocomplete="off">
+                        <button class="btn btn-primary" id="btn-send-ai-msg"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE PROFILE EDITOR MODAL -->
+    <div class="modal-overlay" id="editor-modal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-sliders"></i> Customize Himanshu's Profile Data</h3>
+                <button class="modal-close" id="btn-close-editor"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-intro-text">
+                    Modify profile values below to preview real-time updates across the website.
+                </p>
+                <form id="editor-form" class="editor-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-full-name">Full Name</label>
+                            <input type="text" id="edit-full-name" class="form-input" value="Himanshu Mourya" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-title">Professional Title</label>
+                            <input type="text" id="edit-title" class="form-input" value="AI & Machine Learning Engineer | B.Tech CSE" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-hero-bio">Hero Summary</label>
+                        <textarea id="edit-hero-bio" class="form-input" rows="2" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-about-text">About Section Bio</label>
+                        <textarea id="edit-about-text" class="form-input" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-email">Email Address</label>
+                            <input type="email" id="edit-email" class="form-input" value="himanshumourya8057@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-location">Location</label>
+                            <input type="text" id="edit-location" class="form-input" value="Prayagraj, Uttar Pradesh, India" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-status">Status Badge</label>
+                            <input type="text" id="edit-status" class="form-input" value="B.Tech CSE Student @ J K Institute (CGPA: 8.56)">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-avatar-url">Avatar Photo Path</label>
+                            <input type="text" id="edit-avatar-url" class="form-input" value="assets/avatar.jpg">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Accent Color Palette</label>
+                        <div class="color-palette-options">
+                            <button type="button" class="color-opt-btn" data-accent="cyan" style="background: #06b6d4;" title="Cyber Cyan"></button>
+                            <button type="button" class="color-opt-btn" data-accent="violet" style="background: #8b5cf6;" title="Electric Violet"></button>
+                            <button type="button" class="color-opt-btn" data-accent="emerald" style="background: #10b981;" title="Emerald Spark"></button>
+                            <button type="button" class="color-opt-btn" data-accent="amber" style="background: #f59e0b;" title="Sunset Amber"></button>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer-actions">
+                        <button type="button" class="btn btn-secondary" id="btn-reset-profile">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Defaults
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-solid fa-floppy-disk"></i> Save & Apply
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT DETAIL MODAL -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <h3 id="proj-modal-title">Project Details</h3>
+                <button class="modal-close" id="btn-close-project-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="proj-modal-body">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

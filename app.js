@@ -721,7 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Email address copied to clipboard!', 'success');
     });
 
-    // Contact Form Submit — Web3Forms (sends real email to himanshumourya8057@gmail.com)
+    // Contact Form Submit — Multi-Provider Engine (Web3Forms + FormSubmit + mailto fallback)
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = document.getElementById('btn-submit-contact');
@@ -733,40 +733,68 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.disabled = true;
         btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending...`;
 
-        // Web3Forms access key
-        const WEB3FORMS_KEY = '22926a1c-c883-4261-b8d4-67ad89d4bd85';
+        let sentSuccess = false;
 
+        // Provider 1: Web3Forms
         try {
-            const response = await fetch('https://api.web3forms.com/submit', {
+            const res1 = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({
-                    access_key: WEB3FORMS_KEY,
+                    access_key: '22926a1c-c883-4261-b8d4-67ad89d4bd85',
                     name: senderName,
                     email: senderEmail,
-                    subject: `[Portfolio] ${subject}`,
+                    subject: `[Portfolio Inquiry] ${subject}`,
                     message: message,
-                    from_name: 'Himanshu Mourya Portfolio'
+                    from_name: `${senderName} via Portfolio`
                 })
             });
-
-            const result = await response.json();
-
-            if (result.success) {
-                e.target.reset();
-                btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Message Sent!`;
-                showToast('✅ Your message was sent to Himanshu successfully!', 'success');
-                setTimeout(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message via Email`;
-                }, 3000);
-            } else {
-                throw new Error('Failed');
+            const data1 = await res1.json();
+            if (data1.success) {
+                sentSuccess = true;
             }
-        } catch (err) {
+        } catch (err1) {
+            console.warn('Web3Forms provider error:', err1);
+        }
+
+        // Provider 2: FormSubmit (if Provider 1 failed)
+        if (!sentSuccess) {
+            try {
+                const res2 = await fetch('https://formsubmit.co/ajax/himanshumourya8057@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        name: senderName,
+                        email: senderEmail,
+                        _subject: `[Portfolio Inquiry] ${subject}`,
+                        message: message
+                    })
+                });
+                const data2 = await res2.json();
+                if (data2.success === 'true' || data2.success === true) {
+                    sentSuccess = true;
+                }
+            } catch (err2) {
+                console.warn('FormSubmit provider error:', err2);
+            }
+        }
+
+        if (sentSuccess) {
+            e.target.reset();
+            btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Message Sent!`;
+            showToast('✅ Message delivered to Himanshu\'s inbox!', 'success');
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message via Email`;
+            }, 3000);
+        } else {
+            // Fallback: Direct Mailto
+            const mailBody = `Hi Himanshu,\n\n${message}\n\nFrom: ${senderName}\nEmail: ${senderEmail}`;
+            const mailtoLink = `mailto:himanshumourya8057@gmail.com?subject=${encodeURIComponent('[Portfolio] ' + subject)}&body=${encodeURIComponent(mailBody)}`;
+            window.location.href = mailtoLink;
             btn.disabled = false;
             btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message via Email`;
-            showToast('❌ Failed to send. Please email directly: himanshumourya8057@gmail.com', 'info');
+            showToast('📩 Opening your email app to send directly...', 'info');
         }
     });
 

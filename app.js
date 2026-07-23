@@ -721,8 +721,8 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Email address copied to clipboard!', 'success');
     });
 
-    // Contact Form Submit — Opens email client with pre-filled message
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
+    // Contact Form Submit — Web3Forms (sends real email to himanshumourya8057@gmail.com)
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = document.getElementById('btn-submit-contact');
         const senderName = document.getElementById('contact-name').value.trim();
@@ -731,18 +731,43 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = document.getElementById('contact-message').value.trim();
 
         btn.disabled = true;
-        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Opening Email Client...`;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending...`;
 
-        const emailBody = `Hi Himanshu,%0A%0A${encodeURIComponent(message)}%0A%0ABest regards,%0A${encodeURIComponent(senderName)}%0A${encodeURIComponent(senderEmail)}`;
-        const mailtoLink = `mailto:himanshumourya8057@gmail.com?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+        // Web3Forms access key
+        const WEB3FORMS_KEY = '22926a1c-c883-4261-b8d4-67ad89d4bd85';
 
-        setTimeout(() => {
-            window.location.href = mailtoLink;
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_KEY,
+                    name: senderName,
+                    email: senderEmail,
+                    subject: `[Portfolio] ${subject}`,
+                    message: message,
+                    from_name: 'Himanshu Mourya Portfolio'
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                e.target.reset();
+                btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Message Sent!`;
+                showToast('✅ Your message was sent to Himanshu successfully!', 'success');
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message via Email`;
+                }, 3000);
+            } else {
+                throw new Error('Failed');
+            }
+        } catch (err) {
             btn.disabled = false;
             btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Message via Email`;
-            e.target.reset();
-            showToast('✅ Email client opened! Your message is pre-filled.', 'success');
-        }, 800);
+            showToast('❌ Failed to send. Please email directly: himanshumourya8057@gmail.com', 'info');
+        }
     });
 
     // Skills Filter Buttons

@@ -10,7 +10,7 @@
 
 **A stunning, fully interactive cybernetic AI portfolio website built with pure HTML, CSS & JavaScript.**
 
-🌐 **Live Site:** [mouryahimanshu07.github.io](https://mouryahimanshu07.github.io)
+🌐 **Live Site:** [mouryahimanshu07.github.io/Mouryahimanshu.github.io](https://mouryahimanshu07.github.io/Mouryahimanshu.github.io/)
 
 </div>
 
